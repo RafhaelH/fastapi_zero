@@ -80,7 +80,7 @@ def test_delete_user(client):
     assert response.json() == {
         'username': 'bob',
         'email': 'bob@example.com',
-        'id': 1
+        'id': 1,
     }
 
 

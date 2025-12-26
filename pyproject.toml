@@ -8,7 +8,10 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.12,<4.0"
 dependencies = [
-    "fastapi[standard] (>=0.124.2,<0.125.0)"
+    "fastapi[standard] (>=0.124.2,<0.125.0)",
+    "sqlalchemy (>=2.0.45,<3.0.0)",
+    "pydantic-settings (>=2.12.0,<3.0.0)",
+    "alembic (>=1.17.2,<2.0.0)"
 ]
 
 
@@ -43,7 +46,7 @@ addopts = '-p no:warnings'
 
 [tool.taskipy.tasks]
 lint = 'ruff check'
-format = 'ruff format'
+format = 'ruff check --fix && ruff format'
 run = 'fastapi dev fastapi_zero/app.py'
 pre_test = 'task lint'
 test = 'pytest -s -x --cov=fastapi_zero -vv'

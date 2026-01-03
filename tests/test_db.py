@@ -2,7 +2,17 @@ from dataclasses import asdict
 
 from sqlalchemy import select
 
+from fastapi_zero.database import get_session
 from fastapi_zero.models import User
+
+
+def test_get_session():
+    session_generator = get_session()
+    session = next(session_generator)
+
+    assert session is not None
+
+    session.close()
 
 
 def test_create_user(session, mock_db_time):
